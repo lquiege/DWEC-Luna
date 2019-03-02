@@ -1,0 +1,18 @@
+main {
+    margin-left: 15px;
+}
+
+main {
+    /* margin-top: 1rem;*/
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://image.spreadshirtmedia.com/image-server/v1/mp/compositions/T812A648PA3140PT17X54Y103D1020291184FS2516/views/1,width=300,height=300,backgroundColor=F2F2F2,version=960555536/unicorn-cat-i-are-programmer.jpg');
+    background-size: cover;
+}

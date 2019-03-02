@@ -1,0 +1,51 @@
+<main>
+    <mat-card>
+        <h4>Add game</h4>
+        <form (submit)="onAddGame(postForm)" #postForm="ngForm">
+            <mat-form-field>
+                <input type="input" matInput placeholder="title" ngModel name="title" required #title="ngModel" />
+                <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <textarea matInput ngModel name="console" placeholder="content" required #console="ngModel"></textarea>
+                <mat-error *ngIf="console.invalid">Please enter a console</mat-error>
+            </mat-form-field>
+            <button color="accent" mat-raised-button type="submit">Save game</button>
+        </form>
+
+    </mat-card>
+
+
+    <mat-accordion color="accent" multi="false" *ngIf="games.length>0">
+        <mat-expansion-panel style="background-color: grey" *ngFor="let game of games">
+            <mat-expansion-panel-header>
+                {{game.title}}
+                <!-- {{post.id}} -->
+            </mat-expansion-panel-header>
+            <p>{{game.console}}</p>
+            <p>Con id {{game.id}}</p>
+            <mat-action-row style="background-color: white">
+                <button mat-button color="primary" (click)="getPost(game.id)">EDIT</button>
+                <button mat-button color="warn" (click)="onDelete(game.id)">DELETE</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-card *ngIf="editar">
+            <h4>Edit game</h4>
+            <form #EditForm="ngForm" (submit)="onEdit(EditForm)">
+                <mat-form-field>
+                    <input type="input" matInput placeholder="title" [(ngModel)]="game.title" name="title" required #title="ngModel" />
+                    <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <textarea matInput ngModel name="console" placeholder="content" [(ngModel)]="game.console" required #console="ngModel"></textarea>
+                    <mat-error *ngIf="console.invalid">Please enter a console</mat-error>
+                </mat-form-field>
+                <button color="accent" mat-raised-button type="submit">Update game</button>
+            </form>
+
+        </mat-card>
+    </mat-accordion>
+
+    <p class="mat-body-1" *ngIf="games.length<=0">No posts added yet</p>
+
+</main>

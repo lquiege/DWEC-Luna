@@ -1,0 +1,21 @@
+<mat-card *ngIf="!activado">
+    <form #formRegistro="ngForm" (ngSubmit)="login()">
+        <mat-form-field>
+            <input type="input" #nic="ngModel" matInput [(ngModel)]="nick" placeholder="Nick" name="nick" required minlength="1" />
+            <!-- <mat-placeholder [ngStyle]="{'color': (color ? '' : 'red')}" class="placeholder">{{placeHolderNick}} </mat-placeholder>
+           -->
+            <!--  <mat-placeholder *ngIf="user" class="placeholder">{{placeHolderNick}} </mat-placeholder>
+ -->
+            <mat-error>Please enter a nick</mat-error>
+            <!-- <p *ngIf="nick==='lquiege'" id="errorNick">asdf</p> -->
+            <!--  <small *ngIf="nic.value ==='lquiege'" style="color: red">asdf</small> -->
+            <!-- <mat-error *ngIf="nick ==='lquiege'">Please enter a nick available</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input type="password" matInput name="password" [(ngModel)]="password" #passwor="ngModel" placeholder="Password" required />
+            <mat-error>Please enter a password</mat-error>
+        </mat-form-field>
+        <button color="accent" mat-raised-button [disabled]="!formRegistro.valid" type="submit">Sign in</button>
+    </form>
+
+</mat-card>

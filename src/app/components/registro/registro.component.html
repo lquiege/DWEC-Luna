@@ -1,0 +1,107 @@
+<mat-card *ngIf="!activado">
+    <form #formRegistro="ngForm" (ngSubmit)="registro()">
+        <mat-form-field>
+            <input color="accent" type="input" (blur)="onKeyUp()" #nic="ngModel" matInput [(ngModel)]="nick" placeholder="Nick" name="nick" required minlength="1" />
+            <!-- <mat-placeholder [ngStyle]="{'color': (color ? '' : 'red')}" class="placeholder">{{placeHolderNick}} </mat-placeholder>
+           -->
+            <!--  <mat-placeholder *ngIf="user" class="placeholder">{{placeHolderNick}} </mat-placeholder>
+ -->
+            <mat-hint *ngIf="user" style="color: red">Please, enter an available nick</mat-hint>
+            <mat-error>Please enter a nick</mat-error>
+            <!-- <p *ngIf="nick==='lquiege'" id="errorNick">asdf</p> -->
+            <!--  <small *ngIf="nic.value ==='lquiege'" style="color: red">asdf</small> -->
+            <!-- <mat-error *ngIf="nick ==='lquiege'">Please enter a nick available</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input type="password" matInput name="password" [(ngModel)]="password" #passwor="ngModel" placeholder="Password" required/>
+            <mat-error>Please enter a password</mat-error>
+        </mat-form-field>
+
+        <div *ngIf="password!=null && password.length>0">
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput name="password2" [(ngModel)]="password2" placeholder="Repeat the password" required />
+                <mat-error>Please enter the same password</mat-error>
+                <mat-hint *ngIf="password !== password2" style="color: red">Please, enter the same password</mat-hint>
+            </mat-form-field>
+
+        </div>
+        <button color="accent" mat-raised-button [disabled]="!formRegistro.valid" type="submit">Confirm</button>
+    </form>
+
+</mat-card>
+
+<mat-card *ngIf="activado">
+    <form #formRegistroDefinitivo="ngForm" (ngSubmit)="registroVerdad(formRegistroDefinitivo)">
+        <mat-form-field>
+            <input type="input" #nic="ngModel" matInput [(ngModel)]="nick" placeholder="Nick" name="nick" required disabled />
+            <mat-error>Please enter a nick</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input type="input" #name="ngModel" matInput [(ngModel)]="user.nombre" placeholder="Name" name="name" required />
+            <mat-error>Please enter a name</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input type="input" #name="ngModel" matInput [(ngModel)]="user.apellido_1" placeholder="apellido1" name="apellido1" required />
+            <mat-error>Please enter a family name</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input type="input" #name="ngModel" matInput [(ngModel)]="user.apellido_2" placeholder="apellido2" name="apellido2" required />
+            <mat-error>Please enter another family name</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input type="input" #name="ngModel" matInput [(ngModel)]="user.email" placeholder="Email" name="email" email required />
+            <mat-error>Please enter an email</mat-error>
+
+        </mat-form-field>
+        <label><strong>Sexo:</strong></label>
+        <br>
+        <mat-radio-group [(ngModel)]="user.sexo" labelPosition="before" name="sexo">
+            <mat-radio-button color="accent" value="Mujer">Mujer</mat-radio-button>
+            <mat-radio-button color="accent" value="Hombre">Hombre</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <br>
+        <mat-form-field>
+            <mat-select placeholder="País" [(ngModel)]="user.pais" name="pais">
+                <mat-option value="España">
+                    España
+                </mat-option>
+                <mat-option value="Inglaterra">
+                    Inglaterra
+                </mat-option>
+                <mat-option value="Alemania">
+                    Alemania
+                </mat-option>
+                <mat-option value="Francia">
+                    Francia
+                </mat-option>
+                <mat-option value="Italia">
+                    Italia
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input type="password" matInput name="passwordFin" [(ngModel)]="user.password" #passwordFin="ngModel" placeholder="Password" [value]="password" required />
+            <mat-error>Please enter a password</mat-error>
+        </mat-form-field>
+        <!--   <mat-form-field> -->
+        <h4>Aficiones:</h4>
+
+        <label class="pure-material-checkbox">
+        <input type="checkbox" name="aficiones1" value="Viajar">
+        <span>Viajar</span>
+    </label>
+        <label class="pure-material-checkbox">
+        <input type="checkbox" name="aficiones1" value="Comer">
+        <span>Comer</span>
+    </label>
+
+        <br>
+        <button color="accent" mat-raised-button [disabled]="!formRegistroDefinitivo.valid" type="submit">Register</button>
+    </form>
+
+</mat-card>

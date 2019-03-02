@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAneoObYXJJkQkj6tyJ30y-R-JAp5MzFSQ',
+    authDomain: 'dwec-luna.firebaseapp.com',
+    databaseURL: 'https://dwec-luna.firebaseio.com',
+    projectId: 'dwec-luna',
+    storageBucket: 'dwec-luna.appspot.com',
+    messagingSenderId: '542905739322'
+  }
 };
 
 /*
